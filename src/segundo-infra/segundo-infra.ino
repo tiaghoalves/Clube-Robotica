@@ -38,6 +38,7 @@ void usandoSwitchCase(){
       case 40: digitalWrite(ledRed, LOW);
                digitalWrite(ledGreen, LOW);
                digitalWrite(ledYellow, LOW);
+               count = 0;
         break;
    }
 }
@@ -59,6 +60,7 @@ void usandoIfElse(){
     digitalWrite(ledRed, LOW);
     digitalWrite(ledGreen, LOW);
     digitalWrite(ledYellow, LOW);
+    count = 0;
   }
 }
 
