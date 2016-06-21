@@ -64,13 +64,14 @@ board.on('ready', function(){
  	});
 
   io.on("connection", function(socket){
-  socket.on('click', function(botao){
+    socket.on('click', function(botao){
       console.log(botao);
       $(botao).onclick(function(){
         led.toggle();
       });
-    })
+    });
   });
+  
 });
 
 // little helper function to get a nicely formatted date string
