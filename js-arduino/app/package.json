@@ -1,0 +1,12 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Aplicação de teste usando servidor Node.js + Arduino Johnny-five",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tiago Alves <tiago.alves718@gmail.com>",
+  "license": "ISC"
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sensores</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <script src="../app.js"></script>
+  </head>
+  <body>
+  <div class="container">
+    <h1 class="text-center">Informações:</h1>
+    <div class="col-sm-12">
+      <!--Notem que os IDs são os mesmos passados para usar o .text()-->
+      <h2>Luminosidade: <span id="luz" class="text-primary">0%</span></h2>
+    </div>
+    <div class="col-sm-12">
+      <h2>Valor Potenciômetro: <span id="pot" class="text-danger">0</span></h2>
+    </div>
+    <img class="col-sm-7" src="http://johnny-five.io/img/led-scene-0.gif">
+    <button id="botao" type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Turn the Lights MOTHER FCK</button>
+  </div>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+       var socket = io(); // faz a conexão com o socket.io do node.js
+       //recebe o valor "sensorLuz" enviado pelo node.js
+       socket.on('sensorLuz', function(valor){
+           //escreve o "valor" que é passado na função no id #luz
+           $("#luz").text(valor);
+       });
+
+       socket.on('sensorPot', function(valor){
+           $("#pot").text(valor);
+       });
+       
+       socket.on('connect', function(){
+         $("#botao").click(function(){
+             console.log('CLICOU!');
+             socket.emit('clicou', $("#botao"));
+         });
+       });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Led Server</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <script src="ledServer.js"></script>
+  </head>
+  <body>
+  <div class="container">
+    <h1 class="text-center">Informações:</h1>
+    <button id="botao" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Turn the Lights MOTHER FCK</button>
+  </div>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+        var socket = io(); // faz a conexão com o socket.io do node.js
+        socket.on('connect', function(){
+          $("#botao").click(function(){
+              console.log('CLICOU!');
+              socket.emit('clicou', $("#botao"));
+          });
+        });
+  </script>
+  </body>
+</html>
