@@ -1,4 +1,4 @@
-const int infravermelho = 10;
+const int infravermelho = 6;
 const int receptorInfravermelho = 7;
 const int led = 13;
 byte iv;
