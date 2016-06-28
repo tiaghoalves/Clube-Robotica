@@ -18,7 +18,7 @@ void setup() {
   Serial.begin(9600);
 }
 void loop() {
-  for (byte i = 1; i <= 38; i++) {
+   for (byte i = 1; i <= 38; i++) {
     digitalWrite(infra1, HIGH);
     delayMicroseconds(13);
     digitalWrite(infra1, LOW);
@@ -26,8 +26,8 @@ void loop() {
   }
   // primeira leitura
   iv1 = digitalRead(receptor1);
+  Serial.print("Sinal 6: ");
   Serial.println(iv1);
-  delay(200);
 
   for (byte i = 1; i <= 38; i++) {
     digitalWrite(infra2, HIGH);
@@ -37,11 +37,12 @@ void loop() {
   }
   // segunda leitura
   iv2 = digitalRead(receptor2);
+  Serial.print("Sinal 7: ");
   Serial.println(iv2);
-  delay(200);
+  delay(400);
 
   // incrementa o contador quando uma das leituras for 'cortada'
-  if(iv1 == 0 || iv2 == 0){
+  if(iv1 == 0 || iv2 == 1){
     count++;
   }
 
@@ -56,23 +57,6 @@ void loop() {
                count = 0;
         break;
    }
-  
-  if (iv == 1) {
-    alcanceUm();
-    iv = analogRead(receptorInfravermelho);
-    digitalWrite();
-  } else {
-    alcanceDois();
-    iv = analogRead(receptorInfravermelho);
-    digitalWrite();
-  }
-  
 }
-
-
-
-
-
-
 
 
