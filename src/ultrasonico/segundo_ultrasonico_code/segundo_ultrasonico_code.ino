@@ -45,7 +45,7 @@ void ultrasonico(){
   digitalWrite(TrigPin, LOW);
   delayMicroseconds(2);
   
-  int leitura_echo = pulseIn(EchoPin, HIGH);
+  long leitura_echo = pulseIn(EchoPin, HIGH);
 
   distancia_ultrasonica = leitura_echo / 58;
 

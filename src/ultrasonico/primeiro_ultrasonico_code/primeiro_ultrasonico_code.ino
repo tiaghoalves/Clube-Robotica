@@ -1,8 +1,6 @@
 const int TrigPin = 11;
 const int EchoPin = 10;
 
-const int PotPin = A5;
-
 int distancia_ultrasonica = 0;
 
 const int led = 13;
@@ -22,10 +20,7 @@ void loop() {
 
 ultrasonico();
 
-//map(value, fromLow, fromHigh, toLow, toHigh)
-int distancia_de_ativacao = map(analogRead(PotPin), 0, 1023, 0, 450);
-
-if(distancia_ultrasonica <= distancia_de_ativacao){ 
+if(distancia_ultrasonica < 30){ 
   
   digitalWrite(led ,HIGH);
   
@@ -45,7 +40,7 @@ void ultrasonico(){
   digitalWrite(TrigPin, LOW);
   delayMicroseconds(2);
   
-  int leitura_echo = pulseIn(EchoPin, HIGH);
+  long leitura_echo = pulseIn(EchoPin, HIGH);
 
   distancia_ultrasonica = leitura_echo / 58;
 
